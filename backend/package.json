@@ -2,8 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Its A Basic Rest Api Project With Authentication",
+  "type": "module",
   "main": "index.js",
   "scripts": {
+    "start": "node -r dotenv/config src/index.js",
+    "dev": "nodemon -r dotenv/config src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -24,6 +27,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "cloudinary": "^2.5.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
