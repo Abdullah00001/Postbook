@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Its A Basic Rest Api Project With Authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongodb",
+    "mongoose",
+    "jwt",
+    "cors",
+    "bcrypt",
+    "restapi",
+    "api",
+    "backend",
+    "software",
+    "development"
+  ],
+  "author": "Abdullah Bin Omar Chowdhury",
+  "license": "ISC"
+}
