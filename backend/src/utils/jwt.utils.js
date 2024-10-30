@@ -1,0 +1,48 @@
+import jwt from 'jsonwebtoken';
+
+const genareteAccessToken = playload => {
+  try {
+    const token = jwt.sign(playload, process.env.ACCESSTOKEN_SECRET_KEY);
+    return token;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+const generateRefreshToken = playload => {
+  try {
+    const token = jwt.sign(playload, process.env.REFRESHTOKEN_SECRET_KEY);
+    return token;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+const verifyAccessToken = token => {
+  try {
+    const decoded = jwt.verify(token, process.env.ACCESSTOKEN_SECRET_KEY);
+    return decoded;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+const verifyRefreshToken = token => {
+  try {
+    const decoded = jwt.verify(token, process.env.REFRESHTOKEN_SECRET_KEY);
+    return decoded;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export default {
+  generateAccessToken,
+  generateRefreshToken,
+  verifyAccessToken,
+  verifyRefreshToken,
+};
