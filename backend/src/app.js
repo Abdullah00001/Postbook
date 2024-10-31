@@ -18,6 +18,9 @@ app.use(cookieParser());
 =================================*/
 import UserRoutes from './routes/user.routes.js';
 
+app.use(`${baseUrl}/`, (req, res) => {
+  res.json({ message: 'Server Is Running' });
+});
 app.use(`${baseUrl}/user`, UserRoutes);
 
 export { app };
