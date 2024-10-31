@@ -20,4 +20,4 @@ class errorApiResponse extends apiResponse {
   }
 }
 
-export default { successApiResponse, errorApiResponse };
+export { successApiResponse, errorApiResponse };

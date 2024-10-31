@@ -1,6 +1,18 @@
+import bcrypt from 'bcrypt';
+import { saltRounds } from '../constants.js';
 const cleanUserData = user => {
-  const { password, ...cleanedData } = user.toObject();
+  const { password, refreshToken, ...cleanedData } = user.toObject();
   return cleanedData;
 };
 
-export default cleanUserData;
+const hashPassword = async plainPassword => {
+  const hashPass = await bcrypt.hash(plainPassword, saltRounds);
+  return hashPass;
+};
+
+const comparePassword = async (plainPassword, encryptedPassword) => {
+  const result = await bcrypt.compare(plainPassword, encryptedPassword);
+  return result;
+};
+
+export { cleanUserData, hashPassword, comparePassword };
