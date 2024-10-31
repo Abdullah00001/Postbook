@@ -44,7 +44,7 @@ const verifyRefreshToken = token => {
   }
 };
 
-export default {
+export {
   generateAccessToken,
   generateRefreshToken,
   verifyAccessToken,

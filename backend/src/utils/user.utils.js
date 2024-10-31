@@ -11,8 +11,12 @@ const hashPassword = async plainPassword => {
 };
 
 const comparePassword = async (plainPassword, encryptedPassword) => {
-  const result = await bcrypt.compare(plainPassword, encryptedPassword);
-  return result;
+  try {
+    const result = await bcrypt.compare(plainPassword, encryptedPassword);
+    return result;
+  } catch (error) {
+    return null;
+  }
 };
 
 export { cleanUserData, hashPassword, comparePassword };

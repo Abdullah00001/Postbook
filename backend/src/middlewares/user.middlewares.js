@@ -1,5 +1,6 @@
 import UserModel from '../models/user.models.js';
 import { errorApiResponse } from '../utils/apiResponse.utils.js';
+import { comparePassword } from '../utils/user.utils.js';
 
 const isSignupUserExist = async (req, res, next) => {
   try {
@@ -26,6 +27,7 @@ const isLoginUserExist = async (req, res, next) => {
       return res
         .status(401)
         .json(new errorApiResponse(401, 'User Not Found', null));
+    req.user = isUser;
     next();
   } catch (error) {
     console.log(error);
@@ -35,4 +37,22 @@ const isLoginUserExist = async (req, res, next) => {
   }
 };
 
-export { isSignupUserExist, isLoginUserExist };
+const checkPassword = async (req, res, next) => {
+  try {
+    const { password } = req.body;
+    const user = req.user;
+    const isPasswordValid = await comparePassword(password, user.password);
+    if (!isPasswordValid)
+      return res
+        .status(401)
+        .json(new errorApiResponse(401, 'Invalid Password', null));
+    next();
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json(new errorApiResponse(500, 'Internal Server Error', null));
+  }
+};
+
+export { isSignupUserExist, isLoginUserExist, checkPassword };
