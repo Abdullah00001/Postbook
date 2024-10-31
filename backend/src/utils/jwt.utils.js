@@ -1,8 +1,10 @@
 import jwt from 'jsonwebtoken';
 
-const genareteAccessToken = playload => {
+const generateAccessToken = playload => {
   try {
-    const token = jwt.sign(playload, process.env.ACCESSTOKEN_SECRET_KEY);
+    const token = jwt.sign(playload, process.env.ACCESSTOKEN_SECRET_KEY, {
+      expiresIn: '30min',
+    });
     return token;
   } catch (error) {
     console.log(error);
@@ -12,7 +14,9 @@ const genareteAccessToken = playload => {
 
 const generateRefreshToken = playload => {
   try {
-    const token = jwt.sign(playload, process.env.REFRESHTOKEN_SECRET_KEY);
+    const token = jwt.sign(playload, process.env.REFRESHTOKEN_SECRET_KEY, {
+      expiresIn: '7d',
+    });
     return token;
   } catch (error) {
     console.log(error);

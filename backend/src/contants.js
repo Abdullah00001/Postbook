@@ -1,5 +1,5 @@
 const baseUrl = 'api/v1';
 const dbName = 'postbook';
-const jwt
+const saltRounds = 10;
 
-export { baseUrl, dbName };
+export { baseUrl, dbName, saltRounds };
