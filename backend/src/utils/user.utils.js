@@ -19,4 +19,9 @@ const comparePassword = async (plainPassword, encryptedPassword) => {
   }
 };
 
-export { cleanUserData, hashPassword, comparePassword };
+const compareRefreshToken = (token, dbToken) => {
+  if (token !== dbToken) return false;
+  return true;
+};
+
+export { cleanUserData, hashPassword, comparePassword, compareRefreshToken };
