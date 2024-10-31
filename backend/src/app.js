@@ -22,6 +22,6 @@ import { get } from 'mongoose';
 app.use(`${baseUrl}/`, (req, res) => {
   res.json({ message: 'Server Is Running' });
 });
-app.use(`${baseUrl}/user`, UserRoutes);
+app.get(`${baseUrl}/user`, UserRoutes);
 
 export { app };
