@@ -1,6 +1,7 @@
 import UserModel from '../models/user.models.js';
 import { errorApiResponse } from '../utils/apiResponse.utils.js';
 import { comparePassword } from '../utils/user.utils.js';
+import { verifyAccessToken } from '../utils/jwt.utils.js';
 
 const isSignupUserExist = async (req, res, next) => {
   try {
@@ -55,4 +56,27 @@ const checkPassword = async (req, res, next) => {
   }
 };
 
-export { isSignupUserExist, isLoginUserExist, checkPassword };
+const isAuthenticated = (req, res, next) => {
+  try {
+    const token = req.cookies.accesstoken;
+    if (!token)
+      return res
+        .status(401)
+        .json(new errorApiResponse(401, 'Missing Accesstoken', null));
+    const isTokenValid = verifyAccessToken(token);
+    if (!isTokenValid)
+      return res
+        .status(401)
+        .json(new errorApiResponse(401, 'Invalid Accesstoken', null));
+    req.decoded = isTokenValid;
+    next();
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json(new errorApiResponse(500, 'Internal Server Error', null));
+  }
+};
+
+
+export { isSignupUserExist, isLoginUserExist, checkPassword,isAuthenticated };

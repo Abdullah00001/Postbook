@@ -10,8 +10,9 @@ import {
   loginFieldValidation,
   signUpFieldValidation,
 } from '../middlewares/fieldValidation.middlewares.js';
-import {
+import  {
   checkPassword,
+  isAuthenticated,
   isLoginUserExist,
   isSignupUserExist,
 } from '../middlewares/user.middlewares.js';
@@ -21,6 +22,7 @@ import {
 ====================================*/
 import signupController from '../controllers/signup.controllers.js';
 import loginController from '../controllers/login.controllers.js';
+import authenticated from '../controllers/authenticated.controllers.js';
 
 router
   .route('/signup')
@@ -30,4 +32,5 @@ router
   .route('/login')
   .post(loginFieldValidation, isLoginUserExist, checkPassword, loginController);
 
+router.route('/isauthenticated').get(isAuthenticated, authenticated);
 export default router;
