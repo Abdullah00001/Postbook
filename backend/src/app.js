@@ -19,7 +19,7 @@ app.use(cookieParser());
 import UserRoutes from './routes/user.routes.js';
 import { get } from 'mongoose';
 
-app.use(`${baseUrl}/`, (req, res) => {
+app.use(`${baseUrl}`, (req, res) => {
   res.json({ message: 'Server Is Running' });
 });
 app.get(`${baseUrl}/user`, UserRoutes);
