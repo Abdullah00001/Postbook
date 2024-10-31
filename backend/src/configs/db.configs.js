@@ -1,12 +1,11 @@
 import mongoose from 'mongoose';
-import { dbName } from '../constants.js';
 
 const connect = async () => {
   try {
-    await mongoose.connect(`${process.env.MONGODB_URI}/${dbName}`);
-    console.log(
-      `\nDatabase Connected\nDatabase Name : ${dbName.toUpperCase()}`,
+    await mongoose.connect(
+      process.env.MONGODB_URI_DEV || process.env.MONGODB_URI_PRODUCTION,
     );
+    console.log(`\nDatabase Connected`);
   } catch (error) {
     console.error(
       `Database Connection Failed\nError Message : ${error.message}`,
