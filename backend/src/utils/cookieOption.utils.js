@@ -1,7 +1,7 @@
 const cookieOption = (min, day) => {
   const option = {
     httpOnly: true,
-    secure: false,
+    secure: process.env.COOKIE_SECURE||false,
     sameSite: 'Lax',
   };
   if (min) {

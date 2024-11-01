@@ -11,7 +11,9 @@ dotenv.config();
       console.log(
         `Server Start Successful\nServer Running On Port ${
           process.env.PORT || 8000
-        }\n\n➜ Local: http://localhost:${process.env.PORT || 8000}`,
+        }\n\n➜ VISIT: ${
+          process.env.DEVELOPMENT_URL || process.env.PRODUCTION_URL
+        }`,
       );
     });
   } catch (error) {
