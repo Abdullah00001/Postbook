@@ -3,7 +3,7 @@ import {
   successApiResponse,
   errorApiResponse,
 } from '../utils/apiResponse.utils.js';
-import { cleanUserData } from '../utils/user.utils.js';
+
 const profileController = async (req, res) => {
   try {
     const id = req.decoded.id;
