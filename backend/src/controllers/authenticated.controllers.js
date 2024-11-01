@@ -1,4 +1,4 @@
-import { successApiResponse } from '../utils/apiResponse.utils.js';
+import { successApiResponse,errorApiResponse } from '../utils/apiResponse.utils.js';
 
 const authenticated = (req, res) => {
   try {

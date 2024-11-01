@@ -1,5 +1,5 @@
 import UserModel from '../models/user.models.js';
-import { successApiResponse } from '../utils/apiResponse.utils.js';
+import { successApiResponse,errorApiResponse } from '../utils/apiResponse.utils.js';
 
 const changePassword = async (req, res) => {
   try {

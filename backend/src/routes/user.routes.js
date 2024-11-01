@@ -28,6 +28,7 @@ import refreshtokens from '../controllers/refreshtokens.controllers.js';
 import changePassword from '../controllers/changepassword.controllers.js';
 import deleteAccount from '../controllers/deleteaccount.controllers.js';
 import logoutController from '../controllers/logout.controllers.js';
+import profileController from '../controllers/profile.controllers.js';
 
 router
   .route('/signup')
@@ -42,6 +43,7 @@ router
 =================================== */
 router.route('/isauthenticated').get(isAuthenticated, authenticated);
 router.route('/refreshtokens').post(checkRefreshToken, refreshtokens);
+router.route('/profile').get(isAuthenticated, profileController);
 router.route('/change-password').patch(isAuthenticated, changePassword);
 export default router;
 router.route('/delete-account').delete(isAuthenticated, deleteAccount);
